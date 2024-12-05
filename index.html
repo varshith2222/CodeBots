@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charity Website</title>
+    <!-- Main css for header and footer and colors -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/svg+xml">
+    <!-- Font awesome for icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="stylesheet" href="css/all.min.css">
+    <style>
+        /* Enable smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Chatbot button styling */
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            z-index: 1000;
+        }
+
+        #chatbot-button:hover {
+            transform: scale(1.1);
+            background-color: #0056b3;
+        }
+
+        #chatbot-button img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Chatbot iframe styling */
+        #chatbot-widget {
+            display: none;
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            width: 350px;
+            height: 500px;
+            border: none;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        #chatbot-widget.open {
+            display: block;
+        }
+
+        /* Testimonials Section */
+        #testimonials {
+            background-color: #f8f9fa;
+            padding: 40px;
+        }
+        
+        .testimonial-card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card h3 {
+            margin-bottom: 10px;
+            color: #007bff;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+        }
+
+        .testimonial-card footer {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        /* Contact Us Section */
+        #contact-us {
+            background-color: #fff;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <!-- The header -->
+    <our-header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#donate">Donate</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact-us">Contact Us</a></li>
+            </ul>
+        </nav>
+    </our-header>
+
+    <main>
+        <article>
+            <!-- HERO Section -->
+            <section class="hero" id="home">
+                <div class="container">
+                    <p class="section-subtitle">
+                        <img src="images/subtitle-img-white.png" width="32" height="7" alt="Wavy line">
+                        <span>Welcome to charity</span>
+                    </p>
+                    <h2 class="h1 hero-title">
+                        Give Love for Saving <strong>The Needy</strong>
+                    </h2>
+                    <p class="hero-text">
+                        It is important to follow the student's teaching, but this time
+                        they fall this way with some great work and pain.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ABOUT Section -->
+            <section class="section about" id="about">
+                <div class="container">
+                    <div class="about-banner">
+                        <h2 class="deco-title">About Us</h2>
+                        <div class="banner-row">
+                            <div class="banner-col">
+                                <img src="images.jfif" width="315" height="380" loading="lazy" alt="Tiger" class="about-img w-100">
+                                <img src="images/pexels-pixabay-208512.jpg" width="377" height="250" loading="lazy" alt="Panda" class="about-img about-img-2 w-100">
+                            </div>
+                            <div class="banner-col">
+                                <img src="download.jfif" width="250" height="277" loading="lazy" alt="Elephant" class="about-img about-img-3 w-100">
+                                <img src="images/gettyimages-1368958566-612x612.jpg" width="315" height="380" loading="lazy" alt="Deer" class="about-img w-100">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-content">
+                        <p class="section-subtitle">
+                            <img src="images/subtitle-img-green.png" width="32" height="7" alt="Wavy line">
+                            <span>Why Choose Us</span>
+                        </p>
+
+                        <h2 class="h2 section-title">
+                            Rise Your Hand to Save <strong>The Needy</strong>
+                        </h2>
+
+                        <ul class="tab-nav">
+                            <li>
+                                <button class="tab-btn active">Our Mission</button>
+                            </li>
+                            <li>
+                                <button class="tab-btn">Our Vision</button>
+                            </li>
+                            <li>
+                                <button class="tab-btn">Next Plan</button>
+                            </li>
+                        </ul>
+                        <section id="about-us-section">
+                            <h2>About Us</h2>
+                            <p>Welcome to our website! We are dedicated to helping the underprivileged through various initiatives and programs...</p>
+                        </section>
+
+                        <div class="tab-content">
+                            <p class="section-text">
+                                We provide food, clothes, electronics, and educational materials to those in need, aiming to improve lives and uplift communities.
+                            </p>
+
+                            <ul class="tab-list">
+                                <li class="tab-item">
+                                    <div class="item-icon">
+                                        <ion-icon name="checkmark-circle"></ion-icon>
+                                    </div>
+                                    <p class="tab-text">Charity For Food</p>
+                                </li>
+                                <li class="tab-item">
+                                    <div class="item-icon">
+                                        <ion-icon name="checkmark-circle"></ion-icon>
+                                    </div>
+                                    <p class="tab-text">Charity For Clothes</p>
+                                </li>
+                                <li class="tab-item">
+                                    <div class="item-icon">
+                                        <ion-icon name="checkmark-circle"></ion-icon>
+                                    </div>
+                                    <p class="tab-text">Charity For Electronics</p>
+                                </li>
+                                <li class="tab-item">
+                                    <div class="item-icon">
+                                        <ion-icon name="checkmark-circle"></ion-icon>
+                                    </div>
+                                    <p class="tab-text">Charity For Books</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DONATE Section -->
+            <section id="testimonials">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide">
+                        <img src="C:/Users/varshith/OneDrive/Desktop/Zignasa/images/salman.jpg" alt="Customer 1" class="customer-img">
+                        <p class="quote">"This service changed my life! I found everything I needed in one place."</p>
+                        <h4>- John Doe</h4>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="C:/Users/varshith/OneDrive/Desktop/Zignasa/images/kat.jpg" alt="Customer 2" class="customer-img">
+                        <p class="quote">"Great experience, very easy to use, and fantastic support team!"</p>
+                        <h4>- Jane Smith</h4>
+                    </div>
+                    <div class="testimonial-slide">
+                        <img src="C:/Users/varshith/OneDrive/Desktop/Zignasa/images/ramesh.jpg" alt="Customer 3" class="customer-img">
+                        <p class="quote">"Fast, reliable, and trustworthy service. Highly recommend!"</p>
+                        <h4>- Mark Wilson</h4>
+                    </div>
+                </div>
+            </section>
+            
+
+            <section id="contact-us">
+                <h2 class="section-title">We'd Love to Hear From You!</h2>
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <div class="input-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required />
+                        </div>
+                        <div class="input-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="How can we assist you?" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                    <div class="contact-info">
+                        <h3>Our Info</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> Dundigal, Hyderabad, Mlrit</p>
+                        <p><i class="fas fa-phone"></i> 9849865028</p>
+                        <p><i class="fas fa-envelope"></i> share&care@gmail.com</p>
+                    </div>
+                </div>
+            </section>
+            
+
+    <!-- Chatbot Integration -->
+    <div id="chatbot-button">
+        <img src="favicon.ico" alt="Chat">
+    </div>
+    <div id="chatbot-widget">
+        <iframe src="https://page.joonbot.com/b0282fde-e938-4ce6-87d0-967c677ff733" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+    </div>
+
+    <script>
+        // Toggle chatbot visibility
+        const chatbotButton = document.getElementById('chatbot-button');
+        const chatbotWidget = document.getElementById('chatbot-widget');
+
+        chatbotButton.addEventListener('click', () => {
+            chatbotWidget.classList.toggle('open');
+        });
+    </script>
+
+    <!-- Main js files -->
+    <script type="module" src="js/ionicons.esm.js"></script>
+    <script nomodule="" src="js/ionicons.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

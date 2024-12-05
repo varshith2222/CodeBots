@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        *::after, *::before {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('static/lb.jpg');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+        }
+        form {
+            height: 450px; /* Reduced height */
+            width: 350px; /* Reduced width */
+            background-color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            transform: translate(-50%, -50%);
+            border-radius: 10px;
+            top: 50%;
+            left: 50%;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px; /* Adjusted padding */
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+        }
+        form * {
+            color: white;
+            font-family: sans-serif;
+            letter-spacing: 0.5px;
+            outline: none;
+            border: none;
+        }
+        form h3 {
+            font-size: 28px; /* Slightly smaller font size */
+            font-weight: 500;
+            line-height: 38px;
+            text-align: center;
+        }
+        form label {
+            display: block;
+            margin-top: 20px;
+            font-size: 15px;
+            font-weight: 500;
+        }
+        input {
+            display: block;
+            height: 40px; /* Reduced input height */
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 3px;
+            padding: 0 10px;
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 300;
+        }
+        ::placeholder {
+            color: black;
+        }
+        button {
+            margin-top: 25px;
+            width: 100%;
+            background-color: white;
+            padding: 12px 10px; /* Adjusted padding */
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #000;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #4CAF50; /* Turns green on hover */
+            color: white;
+        }
+        .notification {
+            display: none;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .notification.success {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .notification.error {
+            background-color: #f44336;
+            color: white;
+        }
+        .form {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .form a {
+            color: white;
+            text-decoration: none;
+        }
+    </style>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCdjelq46inDMXNSKXiivwGDnrb88gz59A",
+            authDomain: "zignasa-codebots.firebaseapp.com",
+            projectId: "zignasa-codebots",
+            storageBucket: "zignasa-codebots.appspot.com",
+            messagingSenderId: "563724726699",
+            appId: "1:563724726699:web:274813d776ac96c404a2ee"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.querySelector('form');
+            const notification = document.createElement('div');
+            notification.classList.add('notification');
+            loginForm.prepend(notification);
+
+            loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then((userCredential) => {
+                        notification.textContent = 'Login successful!';
+                        notification.classList.remove('error');
+                        notification.classList.add('success');
+                        notification.style.display = 'block';
+                        setTimeout(() => {
+                            window.location.href = "index.html";
+                        }, 2000);
+                    })
+                    .catch((error) => {
+                        notification.textContent = error.message;
+                        notification.classList.remove('success');
+                        notification.classList.add('error');
+                        notification.style.display = 'block';
+                    });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <h3>Login</h3>
+        <label for="email">Email: <input type="email" placeholder="Email" id="email" required></label>
+        <label for="password">Password: <input type="password" placeholder="Password" id="password" required></label>
+        <button type="submit" id="submit">Log in</button>
+        <div class="form">
+            <p>Don't have an account? <a href="signup.html">Create one</a></p>
+        </div>
+    </form>
+</body>
+</html>
